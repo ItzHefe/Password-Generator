@@ -6,10 +6,7 @@ var lowerSet = ("qazwsxedcrfvtgbyhnujmiklop");
 var numberSet = ("123456789");
 var specialSet = ("!@#$%^&*()");
 
-document.querySelector('#generate').addEventListener('click', promptMe);
 
-function promptMe() { 
-};
 
 // function to start PW Generation
 function generatePassword () {
@@ -55,17 +52,58 @@ function generatePassword () {
     }
   
     //choosing 2 inputs
+    else if (lowerSet && upperSet) {
+      userInput = lowerSet.concat(upperSet);
+    }
+    
+    else if (lowerSet && numberSet) {
+      userInput = lowerSet.concat(numberSet);
+    }
+
+    else if (lowerSet && specialSet) {
+      userInput = lowerSet.concat(specialSet);
+    }
+
+    else if (upperSet && numberSet) {
+      userInput = upperSet.concat(numberSet);
+    }
+
+    else if (upperSet && specialSet) {
+      userInput = upperSet.concat(specialSet);
+    }
+
+    else if (numberSet && specialSet) {
+      userInput = numberSet.concat(specialSet);
+    }
+
+    //choosing 1 input
+
+    else if (lowerSet) {
+      userInput = lowerSet;
+    }
+
+    else if (upperSet) {
+      userInput = upperSet;
+    }
+
+    else if (numberSet) {
+      userInput = numberSet;
+    }
+
+    else if (specialSet) {
+      userInput = specialSet;
+    }
+
+    var genPW = [];
 
 
-    var charset = ("qazwsxedcrfvtgbyhnujmiklop123456789QAZXSWEDCVFRTGBNHYUJMKIOLP!@#$%^&*()");
-    var pwLength = 12;
-    var genPW = "";
-
-
-    for (var i = 0, n = charset.length; i <= pwLength; ++i) {
-      genPW += charset.charAt(Math.floor(Math.random() * n));
+    for (var i = 0; i <= lengthChar; i++) {
+      var pickInput = userInput[Math.floor(Math.random() * userInput.length)];
+      password.push(pickInput);
   }
-  return genPW
+  var ps = genPW.join("");
+  userInput (ps);
+  return ps;
 }
 
 // Write password to the #password input
