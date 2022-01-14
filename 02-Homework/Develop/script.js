@@ -6,11 +6,61 @@ var lowerSet = ("qazwsxedcrfvtgbyhnujmiklop");
 var numberSet = ("123456789");
 var specialSet = ("!@#$%^&*()");
 
+document.querySelector('#generate').addEventListener('click', promptMe);
+
+function promptMe() { 
+};
+
+// function to start PW Generation
 function generatePassword () {
+
+  //first user input of pw length
+    lengthChar = parseInt(prompt ("How many characters? 8-128"));
+    if (!lengthChar) {
+        alert("Please enter a value"); 
+    } else if (lengthChar < 8 || lengthChar > 128) {
+
+      //confirming use chose a valid value
+      lengthChar = parseInt(prompt("Choose between 8 and 128"));
+    } else {
+
+      //confirming other criteria for pw
+      lowerSet = confirm("Include lowercase characters?");
+      upperSet = confirm("Include uppercase characters?");
+      numberSet = confirm("Include numbers?");
+      specialSet = confirm("Include special characters?");
+    };
+
+    // if the user doesn't select anything
+    if (!lowerSet && !upperSet && !numberSet && !specialSet) {
+      userInput = alert("Please choose a criteria.");
+    }
+
+    //choosing all inputs
+    else if (lowerSet && upperSet && numberSet && specialSet) {
+      userInput = lowerSet.concat(upperSet, numberSet, specialSet);
+    }
+
+    //choosing 3 inputs
+    else if (lowerSet && upperSet && numberSet) {
+      userInput = lowerSet.concat(upperSet, numberSet);
+    }
+
+    else if (upperSet && numberSet && specialSet) {
+      userInput = upperSet.concat(numberSet, specialSet);
+    }
+
+    else if (lowerSet && numberSet && specialSet) {
+      userInput = lowerSet.concat(numberSet, specialSet);
+    }
   
+    //choosing 2 inputs
+
+
     var charset = ("qazwsxedcrfvtgbyhnujmiklop123456789QAZXSWEDCVFRTGBNHYUJMKIOLP!@#$%^&*()");
     var pwLength = 12;
     var genPW = "";
+
 
     for (var i = 0, n = charset.length; i <= pwLength; ++i) {
       genPW += charset.charAt(Math.floor(Math.random() * n));
@@ -29,20 +79,3 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-document.querySelector('#generate').addEventListener('click', promptMe);
-
-function promptMe() {
-  var selectUpper = window.prompt ("Include uppercase? Type Y or Yes");
-  var selectLower = window.prompt ("Include lowercase? Type Y or Yes");
-  var selectNumber = window.prompt ("Include numbers? Type Y or Yes");
-  var selectSpecial = window.prompt ("Include Characters? Type Y or Yes");
-}
-
-selectUpper = selectUpper.toUpperCase();
-selectLower = selectLower.toUpperCase();
-selectNumber = selectNumber.toUpperCase();
-selectSpecial = selectSpecial.toUpperCase();
-
-
-
