@@ -2,42 +2,17 @@
 var generateBtn = document.querySelector("#generate");
 var genPW = document.getElementById("password");
 
-var upperCaseCodes = arrayLowHigh (65, 90);
-var lowerCaseCodes = arrayLowHigh (97, 122);
-var numberCodes = arrayLowHigh(48, 57);
-var specialCodes = arrayLowHigh(33, 47).concat(
-  arrayLowHigh(58, 64)
-  ).concat(
-    arrayLowHigh(91, 96)
-    ).concat(
-      arrayLowHigh(123, 126)
-    )
-
-function generatePassword(characterAmount, includeUppercase, includeNumbers, includeSymbols) {
-  let charCodes = lowerCaseCodes
-  if (includeUppercase) charCodes = charCodes.concat(upperCaseCodes)
-  if (includeSymbols) charCodes = charCodes.concat(lowerCaseCodes)
-  if (includeNumbers) charCodes = charCodes.concat(numberCodes)
+function generatePassword () {
   
-  const passwordCharacters = []
-  for (let i = 0; i < characterAmount; i++) {
-    const characterCode = charCodes[Math.floor(Math.random() * charCodes.length)]
-    passwordCharacters.push(String.fromCharCode(characterCode))
+    var charset = ("qazwsxedcrfvtgbyhnujmiklop123456789QAZXSWEDCVFRTGBNHYUJMKIOLP!@#$%^&*()");
+    var pwLength = 12;
+    var genPW = "";
+
+    for (var i = 0, n = charset.length; i <= pwLength; ++i) {
+      genPW += charset.charAt(Math.floor(Math.random() * n));
   }
-  return passwordCharacters.join('')
+  return genPW
 }
-
-
-
-function arrayLowHigh (low, high) {
-  const array = []
-  for (let i = low; i <= high; i++) {
-    array.push(i)
-  }
-  return array
-}
-
-
 
 // Write password to the #password input
 function writePassword() {
@@ -55,14 +30,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-
-function generatePassword () {
-  for (var i = 0, i = pwLength; i++;) {
-    var charset = "1234567890qazwsxedcrfvtgbyhnujmiklop!@#$%^&*()QAZWSXEDCRFVTGBYHNUJMIKLOP";
-    var pwLength = 12;
-    var genPW = "";
-    var randomPW = Math.floor(Math.random() * charset.length);
-    genPW += charset.substring(randomPW, randomPW +1);
-  }
-  document.getElementById("password").value = password;
-}
