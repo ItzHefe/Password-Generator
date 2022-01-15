@@ -12,98 +12,99 @@ var specialSet = ("!@#$%^&*()");
 function generatePassword () {
 
   //first user input of pw length
-    lengthChar = parseInt(prompt ("How many characters? 8-128"));
-    if (!lengthChar) {
+    userInput = parseInt(prompt ("How many characters? 8-128"));
+    if (!userInput) {
         alert("Please enter a value"); 
-    } else if (lengthChar < 8 || lengthChar > 128) {
+    } else if (userInput < 8 || userInput > 128) {
 
       //confirming use chose a valid value
-      lengthChar = parseInt(prompt("Choose between 8 and 128"));
+      userInput = parseInt(prompt("Choose between 8 and 128"));
     } else {
 
       //confirming other criteria for pw
-      lowerSet = confirm("Include lowercase characters?");
-      upperSet = confirm("Include uppercase characters?");
-      numberSet = confirm("Include numbers?");
-      specialSet = confirm("Include special characters?");
+      var userLowerSet = confirm("Include lowercase characters?");
+      var userUpperSet = confirm("Include uppercase characters?");
+      var userNumberSet = confirm("Include numbers?");
+      var userSpecialSet = confirm("Include special characters?");
     };
 
+    var charSet
+
     // if the user doesn't select anything
-    if (!lowerSet && !upperSet && !numberSet && !specialSet) {
-      userInput = alert("Please choose a criteria.");
+    if (!userLowerSet && !userUpperSet && !userNumberSet && !userSpecialSet) {
+      alert("Please choose a criteria.");
     }
 
     //choosing all inputs
-    else if (lowerSet && upperSet && numberSet && specialSet) {
-      userInput = lowerSet.concat(upperSet, numberSet, specialSet);
+    else if (userLowerSet && userUpperSet && userNumberSet && userSpecialSet) {
+      charSet = lowerSet.concat(upperSet, numberSet, specialSet);
     }
 
     //choosing 3 inputs
-    else if (lowerSet && upperSet && numberSet) {
-      userInput = lowerSet.concat(upperSet, numberSet);
+    else if (userLowerSet && userUpperSet && userNumberSet) {
+      charSet = lowerSet.concat(upperSet, numberSet);
     }
 
-    else if (upperSet && numberSet && specialSet) {
-      userInput = upperSet.concat(numberSet, specialSet);
+    else if (userUpperSet && userNumberSet && userSpecialSet) {
+      charSet = upperSet.concat(numberSet, specialSet);
     }
 
-    else if (lowerSet && numberSet && specialSet) {
-      userInput = lowerSet.concat(numberSet, specialSet);
+    else if (userLowerSet && userNumberSet && userSpecialSet) {
+      charSet = lowerSet.concat(numberSet, specialSet);
     }
   
     //choosing 2 inputs
-    else if (lowerSet && upperSet) {
-      userInput = lowerSet.concat(upperSet);
+    else if (userLowerSet && userUpperSet) {
+      charSet = lowerSet.concat(upperSet);
     }
     
-    else if (lowerSet && numberSet) {
-      userInput = lowerSet.concat(numberSet);
+    else if (userLowerSet && userNumberSet) {
+      charSet = lowerSet.concat(numberSet);
     }
 
-    else if (lowerSet && specialSet) {
-      userInput = lowerSet.concat(specialSet);
+    else if (userLowerSet && userSpecialSet) {
+      charSet = lowerSet.concat(specialSet);
     }
 
-    else if (upperSet && numberSet) {
-      userInput = upperSet.concat(numberSet);
+    else if (userUpperSet && userNumberSet) {
+      charSet = upperSet.concat(numberSet);
     }
 
-    else if (upperSet && specialSet) {
-      userInput = upperSet.concat(specialSet);
+    else if (userUpperSet && userSpecialSet) {
+      charSet = upperSet.concat(specialSet);
     }
 
-    else if (numberSet && specialSet) {
-      userInput = numberSet.concat(specialSet);
+    else if (userNumberSet && userSpecialSet) {
+      charSet = numberSet.concat(specialSet);
     }
 
     //choosing 1 input
 
-    else if (lowerSet) {
-      userInput = lowerSet;
+    else if (userLowerSet) {
+      charSet = lowerSet;
     }
 
-    else if (upperSet) {
-      userInput = upperSet;
+    else if (userUpperSet) {
+      charSet = upperSet;
     }
 
-    else if (numberSet) {
-      userInput = numberSet;
+    else if (userNumberSet) {
+      charSet = numberSet;
     }
 
-    else if (specialSet) {
-      userInput = specialSet;
+    else if (userSpecialSet) {
+      charSet = specialSet;
     }
 
-    var genPW = [];
+    var genPW = "";
 
-
-    for (var i = 0; i <= lengthChar; i++) {
-      var pickInput = userInput[Math.floor(Math.random() * userInput.length)];
-      password.push(pickInput);
+    //for loop to consider user selected criteria and generate a response
+    for (var i = 0; i < userInput; i++) {
+      var pickInput = charSet[Math.floor(Math.random() * charSet.length)];
+      genPW = genPW.concat(pickInput);
   }
-  var ps = genPW.join("");
-  userInput (ps);
-  return ps;
+  
+  return genPW;
 }
 
 // Write password to the #password input
