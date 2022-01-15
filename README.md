@@ -12,6 +12,10 @@ In this assignment we were tasked with creating a password generator while takin
 
 All of these unique criteria are prompted when they "click" on the "generate password" button.
 
+### Link to page:
+
+[Password Generator Page](https://itzhefe.github.io/Password-Generator/)
+
 ### Screenshots of working functionality:
 
 Landing page:
