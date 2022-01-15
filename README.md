@@ -15,18 +15,22 @@ All of these unique criteria are prompted when they "click" on the "generate pas
 ### Screenshots of working functionality:
 
 Landing page:
-
+<img src="./Assets/Home-Screen.JPG">
 
 First Prompt:
-
+<img src="./Assets/User-Prompt1.JPG">
 
 Second Prompt:
-
+<img src="./Assets/User-Prompt2.JPG">
 
 third Prompt:
-
+<img src="./Assets/User-Prompt3.JPG">
 
 Fourth Prompt:
+<img src="./Assets/User-Prompt4.JPG">
 
+Fifth Prompt:
+<img src="./Assets/User-Prompt5.JPG">
 
 Generated Password:
+<img src="./Assets/PW-Gen.JPG">

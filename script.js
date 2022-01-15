@@ -101,9 +101,10 @@ function generatePassword () {
     //for loop to consider user selected criteria and generate a response
     for (var i = 0; i < userInput; i++) {
       var pickInput = charSet[Math.floor(Math.random() * charSet.length)];
+      // updating the genPW with pickInput attached to present the updated password
       genPW = genPW.concat(pickInput);
   }
-  
+  //returns the updated password to the screen
   return genPW;
 }
 
